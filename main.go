@@ -49,11 +49,15 @@ func main() {
 	router := mux.NewRouter()
 	port := os.Getenv("PORT")
 
-	router.HandleFunc("/igcinfo/api", getMetadata).Methods("GET")
-	router.HandleFunc("/igcinfo/api/igc", registerTrack).Methods("POST")
-	router.HandleFunc("/igcinfo/api/igc", getIDs).Methods("GET")
-	router.HandleFunc("/igcinfo/api/igc/{id}", getTrackMeta).Methods("GET")
-	router.HandleFunc("/igcinfo/api/igc/{id}/{field}", getTrackMetaField).Methods("GET")
+	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
+	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
+	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
+	router.HandleFunc("/paragliding/api/track/{id}", getTrackMeta).Methods("GET")
+	router.HandleFunc("/paragliding/api/track/{id}/{field}", getTrackMetaField).Methods("GET")
+	router.HandleFunc("/paragliding", redirect).Methods("GET")
+	router.HandleFunc("/paragliding/api/ticker/latest", getLatest).Methods("GET")
+	router.HandleFunc("/paragliding/api/ticker", getTicker).Methods("GET")
+	router.HandleFunc("/paragliding/api/ticker/{timestamp}", getTimestamped).Methods("GET")
 
 	http.ListenAndServe(":"+port, router)
 }
@@ -158,5 +162,21 @@ func getTrackMetaField(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusNotFound)
 	}
+
+}
+
+func redirect(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/paragliding/api", http.StatusSeeOther)
+}
+
+func getLatest(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func getTicker(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func getTimestamped(w http.ResponseWriter, r *http.Request) {
 
 }
