@@ -24,8 +24,8 @@ type Metadata struct {
 
 // Track - Struct for storing basic info about a track
 type Track struct {
-	ID int `json:"id" bson:"id,omitempty"`
-	URL string `json:"url" bson:"url,omitempty"`
+	ID int `json:"id,omitempty"`
+	URL string `json:"url,omitempty"`
 }
 
 // TrackInfo - Struct for storing detailed info about a track
@@ -97,7 +97,7 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		id.ID = lastTrack
 		tracks = append(tracks, track)
 		idlist = append(idlist, id)
-		//insert(track)
+		insert(track)
 		jsonConverter := fmt.Sprintf(`"{"id":%d}"`, track.ID)
 		output := []byte(jsonConverter)
 		w.Header().Set("Content-Type", "application/json")
