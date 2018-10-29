@@ -43,6 +43,13 @@ type IDList struct {
 	ID int `json:"id,omitempty"`
 }
 
+const (
+	MongoDBHosts = "localhost:27017"
+	AuthDatabase = "mydatabase"
+	AuthUserName = ""
+	AuthPassword = ""
+)
+
 var idlist []IDList
 var tracks []Track
 var lastTrack = 0
@@ -59,6 +66,7 @@ func main() {
 	id := res.InsertedID
 	log.Println(id)
 */
+	log.Println("XDD")
 	db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
 	if err != nil { panic(err) }
 	defer db.Close()
