@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/globalsign/mgo"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
 	"log"
@@ -11,6 +12,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -41,12 +43,19 @@ type IDList struct {
 	ID int `json:"id,omitempty"`
 }
 
+type DB struct {
+	Database	*mgo.Database
+}
+
 const (
-	MongoDBHosts = "localhost:27017"
-	AuthDatabase = "mydatabase"
-	AuthUserName = ""
-	AuthPassword = ""
+	MongoDBHosts = "paragliding-cluster-koft4.mongodb.net"
+	AuthDatabase = "test"
+	AuthUserName = "dbAdmin"
+	AuthPassword = "WtpkGi1oSjfTcu4G"
 )
+
+var _init_ctx sync.Once
+var _instance *DB
 
 var idlist []IDList
 var tracks []Track
@@ -83,7 +92,10 @@ func main() {
 
 	fmt.Println("URL: ", res.URL)
 */
-	log.Println("test")
+
+	db := New()
+	log.Println(db)
+
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
@@ -95,6 +107,29 @@ func main() {
 	router.HandleFunc("/paragliding/api/ticker/{timestamp}", getTimestamped).Methods("GET")
 
 	http.ListenAndServe(":"+port, router)
+}
+
+func New() *mgo.Database {
+	_init_ctx.Do(func() {
+		_instance = new(DB)
+
+		mongoDBDialInfo := &mgo.DialInfo{
+			Addrs:		[]string{MongoDBHosts},
+			Timeout:	600 * time.Second,
+			Database:	AuthDatabase,
+			Username:	AuthUserName,
+			Password:	AuthUserName,
+		}
+
+		session, err := mgo.DialWithInfo(mongoDBDialInfo)
+
+		if err != nil {
+			log.Fatal(err)
+			os.Exit(1)
+		}
+		_instance.Database = session.DB(AuthDatabase)
+	})
+	return _instance.Database
 }
 
 func getMetadata(w http.ResponseWriter, r *http.Request) {
