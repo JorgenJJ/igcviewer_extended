@@ -80,6 +80,8 @@ func main() {
 func getMetadata(w http.ResponseWriter, r *http.Request) {
 	metadata := Metadata{uptime(), "Service for Paragliding tracks", "v1"}
 	json.NewEncoder(w).Encode(metadata)
+	tr := Track {1, "www.xdking.com"}
+	insert(tr)
 }
 
 	// Reads a URL as a parameter, makes a new track for it in memory, and writes out the new id in json format
@@ -97,7 +99,6 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		id.ID = lastTrack
 		tracks = append(tracks, track)
 		idlist = append(idlist, id)
-		insert(track)
 		jsonConverter := fmt.Sprintf(`"{"id":%d}"`, track.ID)
 		output := []byte(jsonConverter)
 		w.Header().Set("Content-Type", "application/json")
