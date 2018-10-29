@@ -3,8 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/globalsign/mgo"
-	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
 	"log"
@@ -65,7 +63,7 @@ func main() {
 	if err != nil { log.Fatal(err) }
 	id := res.InsertedID
 	log.Println(id)
-*/
+
 	log.Println("XDD")
 	db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
 	if err != nil { panic(err) }
@@ -84,7 +82,7 @@ func main() {
 	}
 
 	fmt.Println("URL: ", res.URL)
-
+*/
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
