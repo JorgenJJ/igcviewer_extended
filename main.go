@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/globalsign/mgo"
-	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
 	"log"
@@ -144,24 +143,15 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write(output)
 
-		log.Println("XDD")
 		db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
 		if err != nil { panic(err) }
 		defer db.Close()
 		db.SetMode(mgo.Monotonic, true)
 		c := db.DB("test").C("tracks")
-		err = c.Insert(&Track{1, "www.xdking.com"}, &Track{2, "www.godofxd.net"})
+		err = c.Insert(track)
 		if err != nil {
 			log.Fatal(err)
 		}
-
-		res := Track{}
-		err = c.Find(bson.M{"id": 1}).One(&res)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Fprintln(w,"URL: ", res.URL)
 	}
 }
 
