@@ -83,6 +83,7 @@ func main() {
 
 	fmt.Println("URL: ", res.URL)
 */
+	log.Println("test")
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
