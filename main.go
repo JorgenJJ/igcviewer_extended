@@ -12,7 +12,6 @@ import (
 	"path"
 	"strconv"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -47,57 +46,23 @@ type DB struct {
 	Database	*mgo.Database
 }
 
-const (
-	MongoDBHosts = "koft4.mongodb.net"
-	AuthDatabase = "paragliding-cluster"
-	AuthUserName = "dbAdmin"
-	AuthPassword = "WtpkGi1oSjfTcu4G"
-)
-/*
-const (
-	MongoDBHosts = "localhost:27017"
-	AuthDatabase = "test"
-	AuthUserName = ""
-	AuthPassword = ""
-)
-*/
-var _init_ctx sync.Once
-var _instance *DB
-
 var idlist []IDList
 var tracks []Track
 var lastTrack = 0
-
-
-var srvUrl = "mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true"
-var stndrUrl = "mongodb://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-shard-00-00-koft4.mongodb.net:27017,paragliding-cluster-shard-00-01-koft4.mongodb.net:27017,paragliding-cluster-shard-00-02-koft4.mongodb.net:27017/test/ssl=true&replicaSet=paragliding-cluster-shard-0&authSource=admin&retryWrites=true"
+var status = ""
+var timeStart = time.Now()
 
 func main() {
 	router := mux.NewRouter()
 	port := os.Getenv("PORT")
-/*
-	db, err := mongo.NewClient("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
-	if err != nil { log.Fatal(err) }
-	collection := db.Database("baz").Collection("qux")
-	res, err := collection.InsertOne(context.Background(), map[string]string{"hello": "world"})
-	if err != nil { log.Fatal(err) }
-	id := res.InsertedID
-	log.Println(id)
-*/
 
-	mongoDBDialInfo := &mgo.DialInfo{
-		Addrs:		[]string{MongoDBHosts},
-		Timeout:	60 * time.Second,
-		Database:	AuthDatabase,
-		Username:	AuthUserName,
-		Password:	AuthPassword,
-	}
+	dbcon, err := connect()
 
-	session, err := mgo.DialWithInfo(mongoDBDialInfo)
-	if err != nil {
-		log.Fatal(err)
+	if dbcon == true {
+		status = "Connected"
+	} else {
+		status = err.Error()
 	}
-	session.SetMode(mgo.Monotonic, true)
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
@@ -111,32 +76,9 @@ func main() {
 
 	http.ListenAndServe(":"+port, router)
 }
-/*
-func New() *mgo.Database {
-	_init_ctx.Do(func() {
-		_instance = new(DB)
-
-		mongoDBDialInfo := &mgo.DialInfo{
-			Addrs:		[]string{MongoDBHosts},
-			Timeout:	600 * time.Second,
-			Database:	AuthDatabase,
-			Username:	AuthUserName,
-			Password:	AuthPassword,
-		}
-
-		session, err := mgo.DialWithInfo(mongoDBDialInfo)
-
-		if err != nil {
-			log.Fatal(err)
-			os.Exit(1)
-		}
-		_instance.Database = session.DB(AuthDatabase)
-	})
-	return _instance.Database
-}*/
 
 func getMetadata(w http.ResponseWriter, r *http.Request) {
-	metadata := Metadata{"Yes", "Service for Paragliding tracks", "v1"}
+	metadata := Metadata{uptime(), "Service for Paragliding tracks", "v1"}
 	json.NewEncoder(w).Encode(metadata)
 }
 
@@ -237,6 +179,25 @@ func getTrackMetaField(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 	}
 
+}
+
+func uptime() string {
+	uptime := time.Now().Unix() - timeStart.Unix()
+	u := time.Unix(uptime, 0)
+
+	years, months, days		:= u.Date()
+	hours, minutes, seconds := u.Clock()
+	months -= 1
+	days -= 1
+
+	return fmt.Sprintf("%s%d%s%d%s%d%s%d%s%d%s%d%s", "P", absolute(int64(years - 1970)), "Y", months, "M", days, "DT", hours, "H", minutes, "M", seconds, "S")
+}
+
+func absolute(in int64) int64 {
+	if in < 0 {
+		return -in
+	}
+	return in
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
