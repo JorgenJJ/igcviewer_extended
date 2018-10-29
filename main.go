@@ -85,6 +85,20 @@ func main() {
 	log.Println(id)
 */
 
+	mongoDBDialInfo := &mgo.DialInfo{
+		Addrs:		[]string{MongoDBHosts},
+		Timeout:	600 * time.Second,
+		Database:	AuthDatabase,
+		Username:	AuthUserName,
+		Password:	AuthPassword,
+	}
+
+	session, err := mgo.DialWithInfo(mongoDBDialInfo)
+	if err != nil {
+		log.Fatal(err)
+	}
+	session.SetMode(mgo.Monotonic, true)
+
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
@@ -147,15 +161,6 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write(output)
 
-		db, err := mgo.Dial(stndrUrl)
-		if err != nil { panic(err) }
-		defer db.Close()
-		db.SetMode(mgo.Monotonic, true)
-		c := db.DB("test").C("tracks")
-		err = c.Insert(track)
-		if err != nil {
-			log.Fatal(err)
-		}
 	}
 }
 
