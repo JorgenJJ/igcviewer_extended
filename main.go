@@ -64,8 +64,6 @@ func main() {
 		status = err.Error()
 	}
 
-	insert()
-
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
@@ -90,16 +88,14 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 	if !err || len(url[0]) < 1 {
 		log.Println("URL parameter is missing")
 	} else {	// If a URL is sent
-		var track Track
-		var id IDList
-		_ = json.NewDecoder(r.Body).Decode(&track)
-		track.URL = string(url[0])
-		lastTrack++
-		track.ID = lastTrack
-		id.ID = lastTrack
-		tracks = append(tracks, track)
-		idlist = append(idlist, id)
-		jsonConverter := fmt.Sprintf(`"{"id":%d}"`, track.ID)
+		igcData, err := igc.ParseLocation(url[0])
+		if err != nil { http.Error(w, "Problem parsing URL", http.StatusBadRequest) }
+		trackId := lastTrack + 1
+
+		trackData := TrackInfo {igcData.Date, igcData.Pilot, igcData.GliderType, igcData.GliderID, 9}
+
+		insert(trackData)
+		jsonConverter := fmt.Sprintf(`"{"id":%d}"`, trackId)
 		output := []byte(jsonConverter)
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
