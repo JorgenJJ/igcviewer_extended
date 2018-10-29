@@ -46,12 +46,19 @@ type IDList struct {
 type DB struct {
 	Database	*mgo.Database
 }
-
+/*
 const (
 	MongoDBHosts = "paragliding-cluster-koft4.mongodb.net"
 	AuthDatabase = "test"
 	AuthUserName = "dbAdmin"
 	AuthPassword = "WtpkGi1oSjfTcu4G"
+)
+*/
+const (
+	MongoDBHosts = "localhost:27017"
+	AuthDatabase = "test"
+	AuthUserName = ""
+	AuthPassword = ""
 )
 
 var _init_ctx sync.Once
