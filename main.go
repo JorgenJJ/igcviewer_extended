@@ -68,6 +68,10 @@ var idlist []IDList
 var tracks []Track
 var lastTrack = 0
 
+
+var srvUrl = "mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true"
+var stndrUrl = "mongodb://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-shard-00-00-koft4.mongodb.net:27017,paragliding-cluster-shard-00-01-koft4.mongodb.net:27017,paragliding-cluster-shard-00-02-koft4.mongodb.net:27017/test/ssl=true&replicaSet=paragliding-cluster-shard-0&authSource=admin&retryWrites=true"
+
 func main() {
 	router := mux.NewRouter()
 	port := os.Getenv("PORT")
@@ -143,7 +147,7 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write(output)
 
-		db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
+		db, err := mgo.Dial(stndrUrl)
 		if err != nil { panic(err) }
 		defer db.Close()
 		db.SetMode(mgo.Monotonic, true)
