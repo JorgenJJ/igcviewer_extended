@@ -19,13 +19,11 @@ func connect() (bool, error) {
 	return true, err;
 }
 
-func insert(track Track) interface{} {
+func insert(track Track) {
 	collection := db.Collection("tracks")
 
-	res, err := collection.InsertOne(context.Background(), &track)
+	_, err := collection.InsertOne(context.Background(), &track)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	return res.InsertedID
 }
