@@ -115,7 +115,7 @@ func New() *mgo.Database {
 			Timeout:	600 * time.Second,
 			Database:	AuthDatabase,
 			Username:	AuthUserName,
-			Password:	AuthUserName,
+			Password:	AuthPassword,
 		}
 
 		session, err := mgo.DialWithInfo(mongoDBDialInfo)
