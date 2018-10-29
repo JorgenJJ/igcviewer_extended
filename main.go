@@ -48,7 +48,7 @@ type DB struct {
 }
 
 const (
-	MongoDBHosts = "paragliding-cluster-koft4.mongodb.net"
+	MongoDBHosts = "koft4.mongodb.net"
 	AuthDatabase = "paragliding-cluster"
 	AuthUserName = "dbAdmin"
 	AuthPassword = "WtpkGi1oSjfTcu4G"
@@ -87,7 +87,7 @@ func main() {
 
 	mongoDBDialInfo := &mgo.DialInfo{
 		Addrs:		[]string{MongoDBHosts},
-		Timeout:	600 * time.Second,
+		Timeout:	60 * time.Second,
 		Database:	AuthDatabase,
 		Username:	AuthUserName,
 		Password:	AuthPassword,
