@@ -57,7 +57,7 @@ func main() {
 	res, err := collection.InsertOne(context.Background(), map[string]string{"hello": "world"})
 	if err != nil { log.Fatal(err) }
 	id := res.InsertedID
-	fmt.Println(id)
+	log.Println(id)
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
