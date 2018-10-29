@@ -97,7 +97,7 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		id.ID = lastTrack
 		tracks = append(tracks, track)
 		idlist = append(idlist, id)
-		insert(track)
+		//insert(track)
 		jsonConverter := fmt.Sprintf(`"{"id":%d}"`, track.ID)
 		output := []byte(jsonConverter)
 		w.Header().Set("Content-Type", "application/json")
