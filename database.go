@@ -19,10 +19,10 @@ func connect() (bool, error) {
 	return true, err;
 }
 
-func insert(track Track) {
+func insert() {
 	collection := db.Collection("tracks")
 
-	_, err := collection.InsertOne(context.Background(), &track)
+	_, err := collection.InsertOne(context.Background(), Track{1, "XD"})
 	if err != nil {
 		log.Fatal(err)
 	}
