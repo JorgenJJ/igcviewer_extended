@@ -49,7 +49,7 @@ type DB struct {
 
 const (
 	MongoDBHosts = "paragliding-cluster-koft4.mongodb.net"
-	AuthDatabase = "test"
+	AuthDatabase = "paragliding-cluster"
 	AuthUserName = "dbAdmin"
 	AuthPassword = "WtpkGi1oSjfTcu4G"
 )
