@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
@@ -53,7 +54,10 @@ func main() {
 	db, err := mongo.NewClient("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
 	if err != nil { log.Fatal(err) }
 	collection := db.Database("baz").Collection("qux")
-	log.Print(collection)
+	res, err := collection.InsertOne(context.Background(), map[string]string{"hello": "world"})
+	if err != nil { log.Fatal(err) }
+	id := res.InsertedID
+	fmt.Println(id)
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
