@@ -93,9 +93,6 @@ func main() {
 	fmt.Println("URL: ", res.URL)
 */
 
-	db := New()
-	log.Println(db)
-
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
 	router.HandleFunc("/paragliding/api/track", getIDs).Methods("GET")
@@ -135,6 +132,8 @@ func New() *mgo.Database {
 func getMetadata(w http.ResponseWriter, r *http.Request) {
 	metadata := Metadata{"Yes", "Service for Paragliding tracks", "v1"}
 	json.NewEncoder(w).Encode(metadata)
+	db := New()
+	log.Println(db)
 }
 
 	// Reads a URL as a parameter, makes a new track for it in memory, and writes out the new id in json format
