@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
+	"github.com/mongodb/mongo-go-driver/mongo"
 	"log"
 	"net/http"
 	"os"
@@ -48,6 +49,11 @@ var lastTrack = 0
 func main() {
 	router := mux.NewRouter()
 	port := os.Getenv("PORT")
+
+	db, err := mongo.NewClient("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
+	if err != nil { log.Fatal(err) }
+	collection := db.Database("baz").Collection("qux")
+	log.Print(collection)
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")

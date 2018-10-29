@@ -1,6 +1,391 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
-	"rootPath": "igcviewer_extended"
+	"package": [
+		{
+			"checksumSHA1": "H8wo+NR5z+VRl0wqPYpVQfC06ks=",
+			"path": "github.com/go-stack/stack",
+			"revision": "2fee6af1a9795aafbe0253a0cfbdf668e1fb8a9a",
+			"revisionTime": "2018-08-26T13:48:48Z"
+		},
+		{
+			"checksumSHA1": "h1d2lPZf6j2dW/mIqVnd1RdykDo=",
+			"path": "github.com/golang/snappy",
+			"revision": "2e65f85255dbc3072edf28d6b5b8efc472979f5a",
+			"revisionTime": "2018-05-18T05:39:59Z"
+		},
+		{
+			"checksumSHA1": "LdRm4tQjQGauKDYZwBmVDU5CvQI=",
+			"path": "github.com/mongodb/mongo-go-driver",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "Meciqjf4cnWV8r5vZusHE3lVwyg=",
+			"path": "github.com/mongodb/mongo-go-driver/bson",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "xxDpPbHE9Uu/KMcD88vq/8VLjOI=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/bsoncodec",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "tec+GkO40OuGo+T70qpw0gRCHsw=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/bsoncore",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "a72EF7A5hmnKE78/Mvw5dXf8TzM=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/bsonrw",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "bB0gDediwRsRdZdKGyYxjdaESDY=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/bsontype",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "yyAV4WFSsZY5j0NCB5oiQnpScqg=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/decimal",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "NMo2RC7PKdM1GL0dANaKY77OxPE=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/elements",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "QGBT0sDpBAXjBKaJzduEOKE6oJM=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/objectid",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "4l//lIAuH190sSkZ5CASYeGQuX4=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/parser",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "0M8XvPWZOmM97pjEpMnJX01b8yk=",
+			"path": "github.com/mongodb/mongo-go-driver/bson/parser/ast",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "TIc63Q5qZtTO+qo0U1p6FSNzAWo=",
+			"path": "github.com/mongodb/mongo-go-driver/core/address",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "Vk7U9tuLSiJ0piyHf5R7/wyYxEs=",
+			"path": "github.com/mongodb/mongo-go-driver/core/auth",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "B5TtB+dhD9JP2yNyw4HhF+L1eNg=",
+			"path": "github.com/mongodb/mongo-go-driver/core/auth/internal/gssapi",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "4XC5kZxvcxBY02mJGb6kz0SxxDo=",
+			"path": "github.com/mongodb/mongo-go-driver/core/command",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "lqM5emqdum1DmYjfk14svQHMS+8=",
+			"path": "github.com/mongodb/mongo-go-driver/core/compressor",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "OaIF2+TvJpUi16tkq0qJ/Tns7f8=",
+			"path": "github.com/mongodb/mongo-go-driver/core/connection",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "KDOZBb0BJe7kvTvjSvgK4UQWWS0=",
+			"path": "github.com/mongodb/mongo-go-driver/core/connstring",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "5FfRcbgFs44VIA933TRDl6ubk0s=",
+			"path": "github.com/mongodb/mongo-go-driver/core/description",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "uMStgk/kFhKMGXgf9HPXnog6YDI=",
+			"path": "github.com/mongodb/mongo-go-driver/core/dispatch",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "SIEqFRTRRecn1uFchHH3b7mM+t4=",
+			"path": "github.com/mongodb/mongo-go-driver/core/event",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "ye9MPqtsE3iRbzt0lxZW3uQ/x9k=",
+			"path": "github.com/mongodb/mongo-go-driver/core/option",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "fyheosADzzaRjKw5zcJAYBUAZcc=",
+			"path": "github.com/mongodb/mongo-go-driver/core/readconcern",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "m3wWuZNjnnAtQY6fBLXwZOsnAN0=",
+			"path": "github.com/mongodb/mongo-go-driver/core/readpref",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "TcXn060FUyu2z8248G+Ip68L4b0=",
+			"path": "github.com/mongodb/mongo-go-driver/core/result",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "LdA61WI2Ksz4f7Fck8rjdQXTaTE=",
+			"path": "github.com/mongodb/mongo-go-driver/core/session",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "YOEMayHcYOtpwCahwIwghkh7QUE=",
+			"path": "github.com/mongodb/mongo-go-driver/core/tag",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "jobg7vpZv2nxD/1pyAnCGTlaFZs=",
+			"path": "github.com/mongodb/mongo-go-driver/core/topology",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "elqUK11CZdy8bBd++vNmHhU7Kwo=",
+			"path": "github.com/mongodb/mongo-go-driver/core/uuid",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "h6useDIm3RQjAHloHR1ypqoADUE=",
+			"path": "github.com/mongodb/mongo-go-driver/core/version",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "AdnwvyRJaODM2XOIhABEP7GlkJc=",
+			"path": "github.com/mongodb/mongo-go-driver/core/wiremessage",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "xCZ5eDuFOM4VXjvDnMa0Bgc6ciA=",
+			"path": "github.com/mongodb/mongo-go-driver/core/writeconcern",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "X66X9iBJp7j+7jzLbm83kF58yKs=",
+			"path": "github.com/mongodb/mongo-go-driver/internal",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "kEpWLj0e4smbSXRaFOS7PNeLgyQ=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "gJCKq6XYePOKlWTiMi71vwQz4r0=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/aggregateopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "ezp4r6LDU+nz/C09Gfk/b+rPJzw=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/bulkwriteopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "xR1gOrCKk/b6dwmk1inhABPTkr8=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/changestreamopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "hH6CwFPJx/Bq7N1sidt8Ntm4Y5c=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/clientopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "bAdzPS9SCl9w10MLXXBD/mCNXgQ=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/collectionopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "hX67Ef4RbCqXW2JgnUTZnQ6trBo=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/countopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "FK6EgyX19WUhGSTAt1TDUJvbeyE=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/dbopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "OYuP7b2csScQ2zfcmLGrU7lE83o=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/deleteopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "xMZEBKArtj+SUpQXb/sf0fvxDwo=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/distinctopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "MRjXWzc2oJd2QxR80KCDcey/do8=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/dropcollopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "dhUbEQ7sBhLDpLRsKjxl2V7ZyFI=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/findopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "qDjg8dwa9na6n3hfdj1v5ZieS58=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/indexopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "BMslsb3gEJhtrXm+a8gSx14FeSM=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/insertopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "11e1PTMA7KzYfDWJM0lMNe5j5lw=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/listcollectionopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "qfim3JwaMAzaBXM81t9VODL4JfU=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/listdbopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "vCbBmqvSWXqXClEkkzQ/HV6+nUk=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/mongoopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "XiNnjnTURQbI+4NyWlu8ehT79OQ=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/replaceopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "v/l8rW3rnFCpIqq6ETYfy3+Z3cM=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/runcmdopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "mADNWKYa0voPxA9C41pdSJcY96w=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/sessionopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "OpNgs2omWtG1ZBw+cHoTrSqKAoY=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/transactionopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "iO8LAZEhhX0RII96tenLaXOEy8M=",
+			"path": "github.com/mongodb/mongo-go-driver/mongo/updateopt",
+			"revision": "386290ed842525317538cf0385872a89fc537362",
+			"revisionTime": "2018-10-25T21:47:39Z"
+		},
+		{
+			"checksumSHA1": "uE78U34xjlJ815TX/bhLROkjmeI=",
+			"path": "github.com/xdg/scram",
+			"revision": "7eeb5667e42c09cb51bf7b7c28aea8c56767da90",
+			"revisionTime": "2018-08-14T20:50:39Z"
+		},
+		{
+			"checksumSHA1": "lBUiRseyka10o3r/oaQMNlL7sQE=",
+			"path": "github.com/xdg/stringprep",
+			"revision": "73f8eece6fdcd902c185bf651de50f3828bed5ed",
+			"revisionTime": "2018-07-14T16:05:09Z"
+		},
+		{
+			"checksumSHA1": "1MGpGDQqnUoRpv7VEcQrXOBydXE=",
+			"path": "golang.org/x/crypto/pbkdf2",
+			"revision": "e84da0312774c21d64ee2317962ef669b27ffb41",
+			"revisionTime": "2018-10-24T13:26:30Z"
+		},
+		{
+			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
+			"path": "golang.org/x/net/context",
+			"revision": "9b4f9f5ad5197c79fd623a3638e70d8b26cef344",
+			"revisionTime": "2018-10-23T11:20:58Z"
+		},
+		{
+			"checksumSHA1": "vcN67ZjTbGpLLwSghHCbAEvmzMo=",
+			"path": "golang.org/x/sync/semaphore",
+			"revision": "1d60e4601c6fd243af51cc01ddf169918a5407ca",
+			"revisionTime": "2018-03-14T17:21:19Z"
+		},
+		{
+			"checksumSHA1": "ziMb9+ANGRJSSIuxYdRbA+cDRBQ=",
+			"path": "golang.org/x/text/transform",
+			"revision": "4d1c5fb19474adfe9562c9847ba425e7da817e81",
+			"revisionTime": "2018-09-21T09:56:34Z"
+		},
+		{
+			"checksumSHA1": "XJr6+rzzxASewSbC/SCStyGlmuw=",
+			"path": "golang.org/x/text/unicode/norm",
+			"revision": "4d1c5fb19474adfe9562c9847ba425e7da817e81",
+			"revisionTime": "2018-09-21T09:56:34Z"
+		}
+	],
+	"rootPath": "paragliding"
 }
