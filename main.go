@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/globalsign/mgo"
+	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
 	"log"
@@ -79,25 +80,6 @@ func main() {
 	if err != nil { log.Fatal(err) }
 	id := res.InsertedID
 	log.Println(id)
-
-	log.Println("XDD")
-	db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
-	if err != nil { panic(err) }
-	defer db.Close()
-	db.SetMode(mgo.Monotonic, true)
-	c := db.DB("test").C("tracks")
-	err = c.Insert(&Track{1, "www.xdking.com"}, &Track{2, "www.godofxd.net"})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	res := Track{}
-	err = c.Find(bson.M{"id": 1}).One(&res)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("URL: ", res.URL)
 */
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
@@ -112,7 +94,7 @@ func main() {
 
 	http.ListenAndServe(":"+port, router)
 }
-
+/*
 func New() *mgo.Database {
 	_init_ctx.Do(func() {
 		_instance = new(DB)
@@ -134,13 +116,11 @@ func New() *mgo.Database {
 		_instance.Database = session.DB(AuthDatabase)
 	})
 	return _instance.Database
-}
+}*/
 
 func getMetadata(w http.ResponseWriter, r *http.Request) {
 	metadata := Metadata{"Yes", "Service for Paragliding tracks", "v1"}
 	json.NewEncoder(w).Encode(metadata)
-	db := New()
-	log.Println(db)
 }
 
 	// Reads a URL as a parameter, makes a new track for it in memory, and writes out the new id in json format
@@ -163,6 +143,25 @@ func registerTrack(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(output)
+
+		log.Println("XDD")
+		db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
+		if err != nil { panic(err) }
+		defer db.Close()
+		db.SetMode(mgo.Monotonic, true)
+		c := db.DB("test").C("tracks")
+		err = c.Insert(&Track{1, "www.xdking.com"}, &Track{2, "www.godofxd.net"})
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		res := Track{}
+		err = c.Find(bson.M{"id": 1}).One(&res)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Fprintln(w,"URL: ", res.URL)
 	}
 }
 
