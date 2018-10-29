@@ -1,12 +1,12 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/globalsign/mgo"
+	"github.com/globalsign/mgo/bson"
 	"github.com/gorilla/mux"
 	"github.com/marni/goigc"
-	"github.com/mongodb/mongo-go-driver/mongo"
 	"log"
 	"net/http"
 	"os"
@@ -25,8 +25,8 @@ type Metadata struct {
 
 // Track - Struct for storing basic info about a track
 type Track struct {
-	ID int `json:"id,omitempty"`
-	URL string `json:"url,omitempty"`
+	ID int `json:"id" bson:"id,omitempty"`
+	URL string `json:"url" bson:"url,omitempty"`
 }
 
 // TrackInfo - Struct for storing detailed info about a track
@@ -50,7 +50,7 @@ var lastTrack = 0
 func main() {
 	router := mux.NewRouter()
 	port := os.Getenv("PORT")
-
+/*
 	db, err := mongo.NewClient("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
 	if err != nil { log.Fatal(err) }
 	collection := db.Database("baz").Collection("qux")
@@ -58,6 +58,24 @@ func main() {
 	if err != nil { log.Fatal(err) }
 	id := res.InsertedID
 	log.Println(id)
+*/
+	db, err := mgo.Dial("mongodb+srv://dbAdmin:WtpkGi1oSjfTcu4G@paragliding-cluster-koft4.mongodb.net/test?retryWrites=true")
+	if err != nil { panic(err) }
+	defer db.Close()
+	db.SetMode(mgo.Monotonic, true)
+	c := db.DB("test").C("tracks")
+	err = c.Insert(&Track{1, "www.xdking.com"}, &Track{2, "www.godofxd.net"})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	res := Track{}
+	err = c.Find(bson.M{"id": 1}).One(&res)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("URL: ", res.URL)
 
 	router.HandleFunc("/paragliding/api", getMetadata).Methods("GET")
 	router.HandleFunc("/paragliding/api/track", registerTrack).Methods("POST")
@@ -73,7 +91,7 @@ func main() {
 }
 
 func getMetadata(w http.ResponseWriter, r *http.Request) {
-	metadata := Metadata{"Yes", "Service for IGC tracks", "v1"}
+	metadata := Metadata{"Yes", "Service for Paragliding tracks", "v1"}
 	json.NewEncoder(w).Encode(metadata)
 }
 
